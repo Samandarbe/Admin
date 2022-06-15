@@ -12,4 +12,5 @@ import { ApiProperty } from "@nestjs/swagger";
      description: "Uniq email",
    })
    password: string;
+
  }

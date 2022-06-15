@@ -4,9 +4,12 @@ import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config'
 import { User } from "./users/users.model";
 import { RolesModule } from './roles/roles.module';
+import { Roles } from "./roles/roles.model";
+import { User_Roles } from "./roles/user.roles.model";
+import { AuthController } from './auth/auth.controller';
 
 @Module({
-  controllers: [],
+  controllers: [AuthController],
   providers: [],
   imports: [
     ConfigModule.forRoot({
@@ -19,7 +22,7 @@ import { RolesModule } from './roles/roles.module';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [User],
+      models: [User,Roles,User_Roles],
       autoLoadModels: true,
     }),
     UsersModule,
